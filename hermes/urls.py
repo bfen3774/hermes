@@ -16,8 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from lightning.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('lightning/', include('lightning.urls'))
+    path('lightning/', include('lightning.urls')),
+    path('', index, name='index')
 ]
