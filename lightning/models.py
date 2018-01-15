@@ -7,6 +7,29 @@ class Plan(models.Model):
     reddit_link = models.URLField(max_length=200)
     user = models.CharField(max_length=200)
     user_age = models.CharField(max_length=100)
+    user_sex = models.CharField(max_length=20)
+    user_body_type_start = models.CharField(max_length=200)
+    user_body_type_end = models.CharField(max_length=200)
     user_starting_weight = models.IntegerField()
     user_ending_weight = models.IntegerField()
 
+class Workout(models.Model):
+    name = models.CharField(max_length=100)
+    sets = models.IntegerField()
+    reps = models.IntegerField()
+    weight = models.CharField(max_length=50)
+    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+
+
+class Diet(models.Model):
+    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+    calories = models.IntegerField()
+    name = models.CharField(max_length=100)
+    macro_protein = models.IntegerField()
+    macro_carb = models.IntegerField()
+    macro_fat = models.IntegerField()
+
+
+class Food(models.Model):
+    diet = models.ForeignKey(Diet, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
