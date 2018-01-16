@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from lightning.views import index
+from lightning.views import index, PlanListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
