@@ -22,3 +22,7 @@ class Diet(models.Model):
     macro_protein = models.IntegerField()
     macro_carb = models.IntegerField()
     macro_fat = models.IntegerField()
+
+class Food(models.Model):
+    diet = models.ForeignKey(Diet, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
