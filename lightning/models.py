@@ -18,6 +18,8 @@ class Plan(models.Model):
     macro_protein = models.IntegerField()
     macro_carb = models.IntegerField()
     macro_fat = models.IntegerField()
+    def __str__(self):
+        return self.name
 
 class Food(models.Model):
     plan = models.ForeignKey('Plan', on_delete=models.CASCADE)

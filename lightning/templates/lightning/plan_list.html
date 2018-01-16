@@ -1,19 +1,35 @@
-<h1>Plans</h1>
+{% extends 'lightning/base.html' %}
 
+{% block content %}
+
+<h1>Plans</h1>
+<div class="row">
 {% for plan in plan_list %}
-    <div class="col s12 m6">
+    <div class="col s6 m4">
         <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-            <span class="card-title">Card Title</span>
-            <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+            <span class="card-title">{{plan.name}}</span>
+            <ul>
+                <li>{{plan.user_sex}}</li>
+                <li>{{plan.user_height}}</li>
+                <li>{{plan.user_body_type_start}}</li>
+                <li>{{plan.user_body_type_end}}</li>
+                <li>{{plan.user_starting_weight}}</li>
+                <li>{{plan.user_ending_weight}}</li>
+                <li>{{plan.goals}}</li>
+                <li>{{plan.calories}}</li>
+                <li>{{plan.macro_protein}}</li>
+                <li>{{plan.macro_carb}}</li>
+                <li>{{plan.macro_fat}}</li>
+            </ul>
         </div>
         <div class="card-action">
-            <a href="#">This is a link</a>
-            <a href="#">This is a link</a>
+            <a href="{{plan.reddit_link}}">Reddit Link</a>
         </div>
         </div>
     </div>
 {% empty %}
     <p>no plans yet</p>
 {% endfor %}
+</div>
+{% endblock %}
