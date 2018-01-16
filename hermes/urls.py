@@ -21,5 +21,5 @@ from lightning.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('lightning/', include('lightning.urls')),
-    path('', index, name='index')
+    path('', PlanListView.as_view(), name='plan-list')
 ]
