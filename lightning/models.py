@@ -8,7 +8,7 @@ class Plan(models.Model):
     user = models.CharField(max_length=200)
     user_age = models.CharField(max_length=100)
     user_sex = models.CharField(max_length=20)
-    user_height = models.IntegerField()
+    user_height = models.IntegerField(default=0)
     user_body_type_start = models.CharField(max_length=200)
     user_body_type_end = models.CharField(max_length=200)
     user_starting_weight = models.IntegerField()
@@ -20,5 +20,5 @@ class Plan(models.Model):
     macro_fat = models.IntegerField()
 
 class Food(models.Model):
-    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+    plan = models.ForeignKey('Plan', on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
