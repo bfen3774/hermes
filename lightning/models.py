@@ -18,6 +18,7 @@ class Plan(models.Model):
     macro_protein = models.IntegerField()
     macro_carb = models.IntegerField()
     macro_fat = models.IntegerField()
+    period = models.FloatField()
     def __str__(self):
         return self.name
 

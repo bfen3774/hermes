@@ -1,35 +1,58 @@
-{% extends 'lightning/base.html' %}
-
-{% block content %}
+{% extends 'lightning/base.html' %} {% block content %}
 
 <h1>Plans</h1>
 <div class="row">
-{% for plan in plan_list %}
+    {% for plan in plan_list %}
     <div class="col s6 m4">
-        <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-            <span class="card-title">{{plan.name}}</span>
-            <ul>
-                <li>{{plan.user_sex}}</li>
-                <li>{{plan.user_height}}</li>
-                <li>{{plan.user_body_type_start}}</li>
-                <li>{{plan.user_body_type_end}}</li>
-                <li>{{plan.user_starting_weight}}</li>
-                <li>{{plan.user_ending_weight}}</li>
-                <li>{{plan.goals}}</li>
-                <li>{{plan.calories}}</li>
-                <li>{{plan.macro_protein}}</li>
-                <li>{{plan.macro_carb}}</li>
-                <li>{{plan.macro_fat}}</li>
-            </ul>
-        </div>
-        <div class="card-action">
-            <a href="{{plan.reddit_link}}">Reddit Link</a>
-        </div>
+        <div class="card z-depth-4">
+            <div class="card-content">
+                <span class="card-title">{{plan.name}} | {{plan.goals}}</span>
+                <table class="centered">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Age: {{plan.user_age}}</li>
+                                    <li>Sex: {{plan.user_sex}}</li>
+                                    <li>Height: {{plan.user_height}}</li>
+                                    <li>Years: {{plan.period}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                    <ul>
+                                        <li>Calories: {{plan.calories}}</li>
+                                        <li>Protein: {{plan.macro_protein}}</li>
+                                        <li>Carbs: {{plan.macro_carb}}</li>
+                                        <li>Fat: {{plan.macro_fat}}</li>
+                                    </ul>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Starting</th>
+                            <th>Ending</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Weight</td>
+                            <td>{{plan.user_starting_weight}}</td>
+                            <td>{{plan.user_ending_weight}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-action">
+                <a href="{{plan.reddit_link}}">Reddit Link</a>
+            </div>
         </div>
     </div>
-{% empty %}
+    {% empty %}
     <p>no plans yet</p>
-{% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}
