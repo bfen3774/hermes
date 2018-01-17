@@ -1,58 +1,22 @@
-{% extends 'lightning/base.html' %} {% block content %}
+{% extends 'lightning/base.html' %} {% block content %} {% for plan in plan_list %}
 
-<h1>Plans</h1>
-<div class="row">
-    {% for plan in plan_list %}
-    <div class="col s6 m4">
-        <div class="card z-depth-4">
-            <div class="card-content">
-                <span class="card-title">{{plan.name}} | {{plan.goals}}</span>
-                <table class="centered">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <ul>
-                                    <li>Age: {{plan.user_age}}</li>
-                                    <li>Sex: {{plan.user_sex}}</li>
-                                    <li>Height: {{plan.user_height}}</li>
-                                    <li>Years: {{plan.period}}</li>
-                                </ul>
-                            </td>
-                            <td>
-                                    <ul>
-                                        <li>Calories: {{plan.calories}}</li>
-                                        <li>Protein: {{plan.macro_protein}}</li>
-                                        <li>Carbs: {{plan.macro_carb}}</li>
-                                        <li>Fat: {{plan.macro_fat}}</li>
-                                    </ul>
-                                </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Starting</th>
-                            <th>Ending</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Weight</td>
-                            <td>{{plan.user_starting_weight}}</td>
-                            <td>{{plan.user_ending_weight}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-action">
-                <a href="{{plan.reddit_link}}">Reddit Link</a>
-            </div>
-        </div>
+<div class="mdl-cell mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Auckland Sky Tower
+            <br>Auckland, New Zealand</h2>
     </div>
-    {% empty %}
-    <p>no plans yet</p>
-    {% endfor %}
+    <!-- <div class="mdl-card__media">
+                    <img src="skytower.jpg" width="173" height="157" border="0" alt="" style="padding:10px;">
+                </div> -->
+    <div class="mdl-card__supporting-text">
+        The Sky Tower is an observation and telecommunications tower located in Auckland, New Zealand. It is 328 metres (1,076 ft)
+        tall, making it the tallest man-made structure in the Southern Hemisphere.
+    </div>
+    <div class="mdl-card__actions">
+        <a href="http://en.wikipedia.org/wiki/Sky_Tower_%28Auckland%29">Wikipedia entry</a>
+    </div>
 </div>
-{% endblock %}
+
+{% empty %}
+<p>no plans yet</p>
+{% endfor %} {% endblock %}
