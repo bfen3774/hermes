@@ -1,19 +1,82 @@
-{% extends 'lightning/base.html' %} {% block content %} {% for plan in plan_list %}
+{% extends 'lightning/base.html' %} {% block content %}
+
+<div class="mdl-cell mdl-card mdl-cell--12-col mdl-shadow--4dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Adjust Your Settings</h2>
+    </div>
+    <div class="mdl-card__supporting-text" style="width: 100%;">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">Age:
+                <div id="age"></div>
+
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">Height:
+                <div id="height"></div>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">Starting Weight:
+                        <div id="starting_w" style="height: 200px;"></div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        Ending Weight:
+                        <div id="ending_w" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col">
+                Sex:
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                    <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                    <span class="mdl-checkbox__label">Male</span>
+                </label>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+                    <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" checked>
+                    <span class="mdl-checkbox__label">Female</span>
+                </label>
+            </div>
+            <div class="mdl-cell mdl-cell--9-col">Goal:
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="mdl-card__actions">
+
+</div>
+
+
+{% for plan in plan_list %}
 
 <div class="mdl-cell mdl-card mdl-shadow--4dp">
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Auckland Sky Tower
-            <br>Auckland, New Zealand</h2>
+        <h2 class="mdl-card__title-text">{{plan.name}} | Years: {{plan.period}}
+            <br>Weight: {{plan.user_starting_weight}} - {{plan.user_ending_weight}}</h2>
     </div>
-    <!-- <div class="mdl-card__media">
-                    <img src="skytower.jpg" width="173" height="157" border="0" alt="" style="padding:10px;">
-                </div> -->
     <div class="mdl-card__supporting-text">
-        The Sky Tower is an observation and telecommunications tower located in Auckland, New Zealand. It is 328 metres (1,076 ft)
-        tall, making it the tallest man-made structure in the Southern Hemisphere.
+        <table class="mdl-data-table mdl-js-data-table">
+            <tbody>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Age: {{plan.user_age}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">Calories: {{plan.calories}}</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Sex: {{plan.user_sex}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">Protein: {{plan.macro_protein}}</td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Height: {{plan.user_height}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">Goal: {{plan.goals}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="mdl-card__actions">
-        <a href="http://en.wikipedia.org/wiki/Sky_Tower_%28Auckland%29">Wikipedia entry</a>
+        <a href="{{plan.reddit_link}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Source Workout
+        </a>
     </div>
 </div>
 
