@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    var slider = document.getElementById('age');
+    noUiSlider.create(slider, {
+        start: [20, 80],
+        tooltips: [true, true],
+        connect: true,
+        step: 1,
+        orientation: 'horizontal', // 'horizontal' or 'vertical'
+        range: {
+            'min': 0,
+            'max': 100
+        },
+        format: wNumb({
+            decimals: 0
+        })
+    });
+</script>
+<script type="text/javascript">
+    var slider = document.getElementById('height');
+    noUiSlider.create(slider, {
+        start: [20, 80],
+        tooltips: [true, true],
+        connect: true,
+        step: 1,
+        orientation: 'horizontal', // 'horizontal' or 'vertical'
+        range: {
+            'min': 0,
+            'max': 100
+        },
+        format: wNumb({
+            decimals: 0
+        })
+    });
+</script>
+<script type="text/javascript">
+    var slider = document.getElementById('starting_w');
+    noUiSlider.create(slider, {
+        start: [100, 600],
+        tooltips: [true, true],
+        connect: true,
+        step: 1,
+        orientation: 'vertical', // 'horizontal' or 'vertical'
+        range: {
+            'min': 50,
+            'max': 600
+        },
+        format: wNumb({
+            decimals: 0
+        })
+    });
+</script>
+<script type="text/javascript">
+    var slider = document.getElementById('ending_w');
+    noUiSlider.create(slider, {
+        start: [100, 600],
+        tooltips: [true, true],
+        connect: true,
+        step: 1,
+        orientation: 'vertical', // 'horizontal' or 'vertical'
+        range: {
+            'min': 50,
+            'max': 600
+        },
+        format: wNumb({
+            decimals: 0
+        })
+    });
+</script>

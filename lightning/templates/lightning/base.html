@@ -48,105 +48,174 @@
     <!-- Always shows a header, even in smaller screens. -->
     <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
-          <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">Title</span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Title</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-            </nav>
-          </div>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
         </header>
         <div class="mdl-layout__drawer">
-          <span class="mdl-layout-title">Title</span>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-          </nav>
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-grid plans-max-width">
 
-                    {% block content %} {% endblock %}
+                    {% block content %} {% endblock %} {% block javascript %}
+                    <script type="text/javascript">
+                        var slider = document.getElementById('age');
+                        noUiSlider.create(slider, {
+                            start: [20, 80],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: 1,
+                            orientation: 'horizontal', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 0,
+                                'max': 100
+                            },
+                            format: wNumb({
+                                decimals: 0
+                            })
+                        });
+                    </script>
+                    <script type="text/javascript">
+                        var slider = document.getElementById('height');
+                        noUiSlider.create(slider, {
+                            start: [20, 80],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: 1,
+                            orientation: 'horizontal', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 0,
+                                'max': 100
+                            },
+                            format: wNumb({
+                                decimals: 0
+                            })
+                        });
+                    </script>
+                    <script type="text/javascript">
+                        var slider = document.getElementById('starting_w');
+                        noUiSlider.create(slider, {
+                            start: [100, 600],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: 1,
+                            orientation: 'vertical', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 50,
+                                'max': 600
+                            },
+                            format: wNumb({
+                                decimals: 0
+                            })
+                        });
+                    </script>
+                    <script type="text/javascript">
+                        var slider = document.getElementById('ending_w');
+                        noUiSlider.create(slider, {
+                            start: [100, 600],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: 1,
+                            orientation: 'vertical', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 50,
+                                'max': 600
+                            },
+                            format: wNumb({
+                                decimals: 0
+                            })
+                        });
+                    </script>
+                    <script type="text/javascript">
+                        var slider = document.getElementById('calories');
+                        noUiSlider.create(slider, {
+                            start: [500, 4000],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: 1,
+                            orientation: 'horizontal', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 500,
+                                'max': 4000
+                            },
+                            format: wNumb({
+                                decimals: 0
+                            })
+                        });
+                    </script>
+                    <script type="text/javascript">
+                        var slider = document.getElementById('protein');
+                        noUiSlider.create(slider, {
+                            start: [25, 450],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: 1,
+                            orientation: 'horizontal', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 25,
+                                'max': 450
+                            },
+                            format: wNumb({
+                                decimals: 0
+                            })
+                        });
+                    </script>
+                    <script type="text/javascript">
+                        var slider = document.getElementById('period');
+                        noUiSlider.create(slider, {
+                            start: [0, 20],
+                            tooltips: [true, true],
+                            connect: true,
+                            step: .25,
+                            orientation: 'horizontal', // 'horizontal' or 'vertical'
+                            range: {
+                                'min': 0,
+                                'max': 20
+                            },
+                            format: wNumb({
+                                decimals: 2
+                            })
+                        });
+                        slider.noUiSlider.on('change', function () {
+                            var periodValues = slider.noUiSlider.get();
+                            var minPeriod = periodValues[0];
+                            var maxPeriod = periodValues[1];
+                            $.ajax({
+                                type: "GET",
+                                data: {
+                                    minperiodfilter: minPeriod,
+                                    maxperiodfilter: maxPeriod
+                                },
+                                success: function(data){
+                                    console.log(data)
+
+                                } 
+                            });
+
+                        });
+                    </script> {% endblock %}
                 </div>
-                <script type="text/javascript">
-                    var slider = document.getElementById('age');
-                    noUiSlider.create(slider, {
-                        start: [20, 80],
-                        tooltips: [true, true],
-                        connect: true,
-                        step: 1,
-                        orientation: 'horizontal', // 'horizontal' or 'vertical'
-                        range: {
-                            'min': 0,
-                            'max': 100
-                        },
-                        format: wNumb({
-                            decimals: 0
-                        })
-                    });
-                </script>
-                <script type="text/javascript">
-                    var slider = document.getElementById('height');
-                    noUiSlider.create(slider, {
-                        start: [20, 80],
-                        tooltips: [true, true],
-                        connect: true,
-                        step: 1,
-                        orientation: 'horizontal', // 'horizontal' or 'vertical'
-                        range: {
-                            'min': 0,
-                            'max': 100
-                        },
-                        format: wNumb({
-                            decimals: 0
-                        })
-                    });
-                </script>
-                <script type="text/javascript">
-                    var slider = document.getElementById('starting_w');
-                    noUiSlider.create(slider, {
-                        start: [100, 600],
-                        tooltips: [true, true],
-                        connect: true,
-                        step: 1,
-                        orientation: 'vertical', // 'horizontal' or 'vertical'
-                        range: {
-                            'min': 50,
-                            'max': 600
-                        },
-                        format: wNumb({
-                            decimals: 0
-                        })
-                    });
-                </script>
-                <script type="text/javascript">
-                    var slider = document.getElementById('ending_w');
-                    noUiSlider.create(slider, {
-                        start: [100, 600],
-                        tooltips: [true, true],
-                        connect: true,
-                        step: 1,
-                        orientation: 'vertical', // 'horizontal' or 'vertical'
-                        range: {
-                            'min': 50,
-                            'max': 600
-                        },
-                        format: wNumb({
-                            decimals: 0
-                        })
-                    });
-                </script>
+
 
                 <!-- Compiled and minified JavaScript -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
