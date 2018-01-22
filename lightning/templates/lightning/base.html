@@ -79,8 +79,17 @@
 
                     {% block content %} {% endblock %} {% block javascript %}
                     <script type="text/javascript">
-                        var slider = document.getElementById('age');
-                        noUiSlider.create(slider, {
+                        //Define menu variables
+                        var slider_age = document.getElementById('age');
+                        var slider_height = document.getElementById('height');
+                        var slider_starting_w = document.getElementById('starting_w');
+                        var slider_ending_w = document.getElementById('ending_w');
+                        var slider_calories = document.getElementById('calories');
+                        var slider_protein = document.getElementById('protein');
+                        var slider_period = document.getElementById('period');
+                        
+                        //Create sliders
+                        noUiSlider.create(slider_age, {
                             start: [20, 80],
                             tooltips: [true, true],
                             connect: true,
@@ -94,10 +103,7 @@
                                 decimals: 0
                             })
                         });
-                    </script>
-                    <script type="text/javascript">
-                        var slider = document.getElementById('height');
-                        noUiSlider.create(slider, {
+                        noUiSlider.create(slider_height, {
                             start: [20, 80],
                             tooltips: [true, true],
                             connect: true,
@@ -111,10 +117,7 @@
                                 decimals: 0
                             })
                         });
-                    </script>
-                    <script type="text/javascript">
-                        var slider = document.getElementById('starting_w');
-                        noUiSlider.create(slider, {
+                        noUiSlider.create(slider_starting_w, {
                             start: [100, 600],
                             tooltips: [true, true],
                             connect: true,
@@ -128,10 +131,7 @@
                                 decimals: 0
                             })
                         });
-                    </script>
-                    <script type="text/javascript">
-                        var slider = document.getElementById('ending_w');
-                        noUiSlider.create(slider, {
+                        noUiSlider.create(slider_ending_w, {
                             start: [100, 600],
                             tooltips: [true, true],
                             connect: true,
@@ -145,10 +145,7 @@
                                 decimals: 0
                             })
                         });
-                    </script>
-                    <script type="text/javascript">
-                        var slider = document.getElementById('calories');
-                        noUiSlider.create(slider, {
+                        noUiSlider.create(slider_calories, {
                             start: [500, 4000],
                             tooltips: [true, true],
                             connect: true,
@@ -162,10 +159,7 @@
                                 decimals: 0
                             })
                         });
-                    </script>
-                    <script type="text/javascript">
-                        var slider = document.getElementById('protein');
-                        noUiSlider.create(slider, {
+                        noUiSlider.create(slider_protein, {
                             start: [25, 450],
                             tooltips: [true, true],
                             connect: true,
@@ -179,10 +173,7 @@
                                 decimals: 0
                             })
                         });
-                    </script>
-                    <script type="text/javascript">
-                        var slider = document.getElementById('period');
-                        noUiSlider.create(slider, {
+                        noUiSlider.create(slider_period, {
                             start: [0, 20],
                             tooltips: [true, true],
                             connect: true,
@@ -196,6 +187,58 @@
                                 decimals: 2
                             })
                         });
+
+                        slider_age.noUiSlider.on('change', function(){
+                            var age = slider_age.noUiSlider.get();
+                            var height = slider_height.noUiSlider.get();
+                            var starting_weight = slider_starting_w.noUiSlider.get();
+                            var ending_weight = slider_ending_w.noUiSlider.get();
+                            var calories = slider_calories.noUiSlider.get();
+                            var protein = slider_protein.noUiSlider.get();
+                            var period = slider_period.noUiSlider.get();
+                            console.log(age, height, starting_weight, ending_weight, calories, protein, period);
+                            
+                            $.ajax({
+                                type: "GET",
+                                url: "/get_queryset/",
+                                data: {
+                                    'age_s': age[0],
+                                    'age_e': age[1],
+                                    'height_s': height[0],
+                                    'height_e': height[1],
+                                    'starting_weight_s': starting_weight[0],
+                                    'starting_weight_e': starting_weight[1],
+                                    'ending_weight_s': ending_weight[0],
+                                    'ending_weight_e': ending_weight[1],
+                                    'calories_s': calories[0],
+                                    'calories_e': calories[1],
+                                    'protein_s': protein[0],
+                                    'protein_e': protein[1],
+                                    'period_s': period[0],
+                                    'period_e': period[1],
+                                },
+                                dataType: 'json',
+                                success: function(data) {
+                                    console.log(data)
+                                },
+                                error: function(response, error){
+                                    alert(error);
+                                }
+
+                            });
+
+                        });
+                        slider_height
+                        slider_starting_w
+                        slider_ending_w
+                        slider_calories
+                        slider_protein
+                        slider_period
+                    </script>
+
+                    <!-- <script type="text/javascript">
+                        
+                        
                         slider.noUiSlider.on('change', function () {
                             var periodValues = slider.noUiSlider.get();
                             var minPeriod = periodValues[0];
@@ -213,7 +256,7 @@
                             });
 
                         });
-                    </script> {% endblock %}
+                    </script> --> {% endblock %}
                 </div>
 
 
