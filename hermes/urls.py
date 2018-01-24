@@ -16,13 +16,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from lightning.views import index, PlanListView, get_queryset
+from lightning.views import index, PlanListView
 from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('lightning/', include('lightning.urls')),
     path('', PlanListView.as_view(), name='plan-list'),
-    url(r'^get_queryset/$', get_queryset, name='get_queryset'),
+    url(r'^get/$', PlanListView.get, name='get'),
 
 ]
