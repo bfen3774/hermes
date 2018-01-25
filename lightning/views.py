@@ -3,11 +3,15 @@ from django.views.generic.list import ListView
 from .models import Plan
 from django.utils import timezone
 from django.http import HttpResponse
+from .forms import GetPlan
 
 # Create your views here.
 def index(request):
     return render(request, 'lightning/index.html')
 
+def get_plan(request):
+    form = GetPlan()
+    return render(request, 'blog/post_edit.html', {'form': form})
 
 def filter_plans(request):
 
